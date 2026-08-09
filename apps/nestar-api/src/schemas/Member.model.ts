@@ -8,7 +8,7 @@ const MemberSchema = new Schema(
 			enum: MemberType,
 			default: MemberType.USER,
 		},
-		memberstatus: {
+		memberStatus: {
 			type: String,
 			enum: MemberStatus,
 			default: MemberStatus.ACTIVE,
@@ -50,15 +50,15 @@ const MemberSchema = new Schema(
 			type: Number,
 			default: 0,
 		},
-		memberArticle: {
+		memberArticles: {
 			type: Number,
 			default: 0,
 		},
-		memberFollower: {
+		memberFollowers: {
 			type: Number,
 			default: 0,
 		},
-		memberFollowing: {
+		memberFollowings: {
 			type: Number,
 			default: 0,
 		},
