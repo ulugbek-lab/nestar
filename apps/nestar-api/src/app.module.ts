@@ -12,8 +12,7 @@ import { DatabaseModule } from './database/database.module';
 	imports: [
 		ConfigModule.forRoot(), //.env
 		GraphQLModule.forRoot({
-			// rest > graphQl
-			driver: ApolloDriver,
+			driver: ApolloDriver, // rest > graphQl
 			playground: true,
 			uploads: false,
 			autoSchemaFile: true,
