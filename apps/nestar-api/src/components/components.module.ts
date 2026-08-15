@@ -21,3 +21,5 @@ import { BoardArticleModule } from './board-article/board-article.module';
 	],
 })
 export class ComponentsModule {}
+
+

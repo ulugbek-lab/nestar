@@ -5,22 +5,22 @@ import { MemberAuthType, MemberStatus, MemberType } from '../../enums/member.enu
 @ObjectType()
 export class Member {
 	@Field(() => String)
-	_id!: ObjectId;
+	_id: ObjectId;
 
 	@Field(() => MemberType)
-	memberType!: MemberType;
+	memberType: MemberType;
 
 	@Field(() => MemberStatus)
-	memberStatus!: MemberStatus;
+	memberStatus: MemberStatus;
 
 	@Field(() => MemberAuthType)
-	memberAuthType!: MemberAuthType;
+	memberAuthType: MemberAuthType;
 
 	@Field(() => String)
-	memberPhone!: string;
+	memberPhone: string;
 
 	@Field(() => String)
-	memberNick!: string;
+	memberNick: string;
 
 	memberPassword?: string; //no field, so graphql doesnt show it
 
@@ -28,7 +28,7 @@ export class Member {
 	memberFullName?: string;
 
 	@Field(() => String)
-	memberImage!: string;
+	memberImage: string;
 
 	@Field(() => String, { nullable: true })
 	memberAddress?: string;
@@ -40,34 +40,34 @@ export class Member {
 	memberProperties?: number;
 
 	@Field(() => Int)
-	memberArticles!: number;
+	memberArticles: number;
 
 	@Field(() => Int)
-	memberFollowers!: number;
+	memberFollowers: number;
 
 	@Field(() => Int)
-	memberFollowings!: number;
+	memberFollowings: number;
 
 	@Field(() => Int)
-	memberPoints!: number;
+	memberPoints: number;
 
 	@Field(() => Int)
-	memberLikes!: number;
+	memberLikes: number;
 
 	@Field(() => Int)
-	memberViews!: number;
+	memberViews: number;
 
 	@Field(() => Int)
-	memberComments!: number;
+	memberComments: number;
 
 	@Field(() => Int)
-	memberRank!: number;
+	memberRank: number;
 
 	@Field(() => Int)
-	memberWarnings!: number;
+	memberWarnings: number;
 
 	@Field(() => Int)
-	memberBlocks!: number;
+	memberBlocks: number;
 
 	@Field(() => Date, { nullable: true })
 	deletedAt?: Date;
