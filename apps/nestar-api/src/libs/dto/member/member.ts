@@ -22,7 +22,7 @@ export class Member {
 	@Field(() => String)
 	memberNick: string;
 
-	memberPassword?: string; //no field, so graphql doesnt show it
+	memberPassword: string; //required in TypeScript, hidden from GraphQ
 
 	@Field(() => String, { nullable: true }) //can be empty
 	memberFullName?: string;
