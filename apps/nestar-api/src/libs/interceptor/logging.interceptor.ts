@@ -11,7 +11,6 @@ export class LoggingInterceptor implements NestInterceptor {
 		const requestType = context.getType<GqlContextType>();
 
 		if (requestType === 'http') {
-			return next.handle();
 			// Develop if needed!
 		} else if (requestType === 'graphql') {
 			// 1. Print request
@@ -28,6 +27,7 @@ export class LoggingInterceptor implements NestInterceptor {
 				}),
 			);
 		}
+		return next.handle();
 	}
 	private stringify(context: ExecutionContext): string {
 		return JSON.stringify(context).slice(0, 75);
