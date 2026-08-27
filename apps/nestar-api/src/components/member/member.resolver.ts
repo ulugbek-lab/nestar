@@ -55,7 +55,7 @@ export class MemberResolver {
 		@AuthMember('_id') memberId: ObjectId,
 	): Promise<Member> {
 		console.log('Mutation: updateMember');
-		delete input._id;
+		// delete input._id;
 		return await this.memberService.updateMember(memberId, input);
 	}
 	@UseGuards(WithoutGuard)
@@ -104,6 +104,10 @@ export class MemberResolver {
 		console.log('Mutation: imageUploader');
 
 		if (!filename) throw new Error(Message.UPLOAD_FAILED);
+		console.log('Uploaded file:', {
+			filename,
+			mimetype,
+		});
 		const validMime = validMimeTypes.includes(mimetype);
 		if (!validMime) throw new Error(Message.PROVIDE_ALLOWED_FORMAT);
 
