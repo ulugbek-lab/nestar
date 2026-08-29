@@ -1,8 +1,16 @@
+export const availableAgentSorts = ['createdAt', 'updatedAt', 'memberLikes', 'memberViews', 'memberRank'];
+export const availabeMemberSorts = ['createdAt', 'updatedAt', 'memberLikes', 'memberViews'];
 
-export const availableAgentSorts = ["createdAt", "updatedAt", "memberLikes", "memberViews", "memberRank"]
-export const availabeMemberSorts = ["createdAt", "updatedAt", "memberLikes", "memberViews"]
-
- // IMAGE CONFIGURATION (config.js)
+export const availableOptions = ['propertyBarter', 'propertyRent'];
+export const availablePropertySorts = [
+	'createdAt',
+	'updatedAt',
+	'propertyLikes',
+	'propertyViews',
+	'propertyRank',
+	'propertyPrice',
+];
+// IMAGE CONFIGURATION (config.js)
 import { v4 as uuidv4 } from 'uuid';
 import * as path from 'path';
 import { Types } from 'mongoose';
@@ -15,4 +23,13 @@ export const getSerialForImage = (filename: string) => {
 //MONGOOSE OBJECT
 export const shapeIntoMongoObjectId = (target: any) => {
 	return typeof target === 'string' ? new Types.ObjectId(target) : target;
+};
+
+export const lookupMember = {
+	$lookup: {
+		from: 'members',
+		localField: 'memberId',
+		foreignField: '_id',
+		as: 'memberData',
+	},
 };
