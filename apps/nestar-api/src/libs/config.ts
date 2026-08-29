@@ -1,4 +1,3 @@
-import { ObjectId } from 'bson';
 
 export const availableAgentSorts = ["createdAt", "updatedAt", "memberLikes", "memberViews", "memberRank"]
 export const availabeMemberSorts = ["createdAt", "updatedAt", "memberLikes", "memberViews"]
@@ -6,6 +5,7 @@ export const availabeMemberSorts = ["createdAt", "updatedAt", "memberLikes", "me
  // IMAGE CONFIGURATION (config.js)
 import { v4 as uuidv4 } from 'uuid';
 import * as path from 'path';
+import { Types } from 'mongoose';
 
 export const validMimeTypes = ['image/png', 'image/jpg', 'image/jpeg'];
 export const getSerialForImage = (filename: string) => {
@@ -14,5 +14,5 @@ export const getSerialForImage = (filename: string) => {
 };
 //MONGOOSE OBJECT
 export const shapeIntoMongoObjectId = (target: any) => {
-	return typeof target === 'string' ? new ObjectId(target) : target;
+	return typeof target === 'string' ? new Types.ObjectId(target) : target;
 };
