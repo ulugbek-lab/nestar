@@ -29,7 +29,7 @@ export class PropertyUpdate {
 	@IsOptional()
 	@Length(5, 100)
 	@Field(() => String, { nullable: true })
-	propertyTitle: string;
+	propertyTitle?: string;
 
 	@IsOptional()
 	@Length(3, 100)
