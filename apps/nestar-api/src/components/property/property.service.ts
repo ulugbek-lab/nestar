@@ -17,6 +17,7 @@ import { ViewService } from '../view/view.service';
 import { PropertyUpdate } from '../../libs/dto/property/property.update';
 import moment from 'moment';
 import { lookupMember, shapeIntoMongoObjectId } from '../../libs/config';
+import { retry } from 'rxjs';
 
 @Injectable()
 export class PropertyService {
@@ -244,6 +245,13 @@ export class PropertyService {
 				modifier: -1,
 			});
 		}
+		return result;
+	}
+	public async removePropertyByAdmin(propertyId: Types.ObjectId): Promise<Property> {
+		const search: T = { _id: propertyId, propertyStatus: PropertyStatus.DELETE };
+		const result = await this.propertyModel.findOneAndDelete(search).exec();
+		if (!result) throw new InternalServerErrorException(Message.REMOVE_FAILED);
+
 		return result;
 	}
 }
