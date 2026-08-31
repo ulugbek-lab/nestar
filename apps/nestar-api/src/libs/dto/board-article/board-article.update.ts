@@ -14,7 +14,7 @@ export class BoardArticleUpdate {
 	articleStatus?: BoardArticleStatus;
 
 	@IsOptional()
-	@Length(3, 50)
+	@Length(3, 500)
 	@Field(() => String, { nullable: true })
 	articleTitle?: string;
 
