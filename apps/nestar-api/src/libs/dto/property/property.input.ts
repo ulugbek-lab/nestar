@@ -5,6 +5,8 @@ import { Types } from 'mongoose';
 import { availableOptions, availablePropertySorts } from '../../config';
 import { Direction } from '../../enums/common.enum';
 
+/** =============== PropertyInput =================== */
+
 @InputType()
 export class PropertyInput {
 	@IsNotEmpty()
@@ -68,6 +70,8 @@ export class PropertyInput {
 	@Field(() => Date, { nullable: true })
 	constructedAt?: Date;
 }
+
+/** =============== PropertiesInquiry =================== */
 
 @InputType()
 export class PriceRange {
@@ -196,6 +200,8 @@ export class AgentPropertiesInquiry {
 	@Field(() => PISearch)
 	search: APISearch;
 }
+
+/** =============== AllPropertiesInquiry (AGENT) =================== */
 
 @InputType()
 class ALPISearch {

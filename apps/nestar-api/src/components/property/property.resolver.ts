@@ -35,17 +35,7 @@ export class PropertyResolver {
 		return await this.propertyService.createProperty(input);
 	}
 
-	@UseGuards(WithoutGuard)
-	@Query((returns) => Property)
-	public async getProperty(
-		@Args('propertyId') input: string,
-		@AuthMember('_id') memberId: Types.ObjectId,
-	): Promise<Property> {
-		console.log('Query: getProperty');
-		const propertyId = shapeIntoMongoObjectId(input);
-		return await this.propertyService.getProperty(memberId, propertyId);
-	}
-
+	//AGENT
 	@Roles(MemberType.AGENT)
 	@UseGuards(WithoutGuard)
 	@Mutation((returns) => Property)
@@ -58,16 +48,6 @@ export class PropertyResolver {
 		return await this.propertyService.updateProperty(memberId, input);
 	}
 
-	@UseGuards(WithoutGuard)
-	@Mutation((returns) => Properties)
-	public async getProperties(
-		@Args('input') input: PropertiesInquiry,
-		@AuthMember('_id') memberId: Types.ObjectId,
-	): Promise<Properties> {
-		console.log('Mutation: getProperties');
-		return await this.propertyService.getProperties(memberId, input);
-	}
-
 	@Roles(MemberType.AGENT)
 	@UseGuards(RolesGuard)
 	@Query((returns) => Properties)
@@ -78,6 +58,29 @@ export class PropertyResolver {
 		console.log('Query: getAgentProperties');
 		return await this.propertyService.getAgentProperties(memberId, input);
 	}
+
+	//ALL
+	@UseGuards(WithoutGuard)
+	@Query((returns) => Property)
+	public async getProperty(
+		@Args('propertyId') input: string,
+		@AuthMember('_id') memberId: Types.ObjectId,
+	): Promise<Property> {
+		console.log('Query: getProperty');
+		const propertyId = shapeIntoMongoObjectId(input);
+		return await this.propertyService.getProperty(memberId, propertyId);
+	}
+
+	@UseGuards(WithoutGuard)
+	@Mutation((returns) => Properties)
+	public async getProperties(
+		@Args('input') input: PropertiesInquiry,
+		@AuthMember('_id') memberId: Types.ObjectId,
+	): Promise<Properties> {
+		console.log('Mutation: getProperties');
+		return await this.propertyService.getProperties(memberId, input);
+	}
+
 	/** ADMIN  */
 	@Roles(MemberType.ADMIN)
 	@UseGuards(RolesGuard)
