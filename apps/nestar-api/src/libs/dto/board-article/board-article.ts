@@ -1,6 +1,6 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { BoardArticleCategory, BoardArticleStatus } from '../../enums/board-article.enum';
-import { ObjectId, Types } from 'mongoose';
+import {  Types } from 'mongoose';
 import { Member, TotalCounter } from '../member/member';
 
 @ObjectType()

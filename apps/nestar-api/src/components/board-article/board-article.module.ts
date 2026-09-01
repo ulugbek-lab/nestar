@@ -16,6 +16,6 @@ import { ViewModule } from '../view/view.module';
 	],
 
 	providers: [BoardArticleResolver, BoardArticleService],
-	exports: [BoardArticleModule],
+	exports: [BoardArticleService],
 })
 export class BoardArticleModule {}
