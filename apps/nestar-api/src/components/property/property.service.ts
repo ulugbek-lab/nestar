@@ -121,19 +121,7 @@ export class PropertyService {
 		targetProperty.memberData = await this.memberService.getMember(null, targetProperty.memberId);
 		return targetProperty;
 	}
-	/**=========================== propertyStatsEditor =============================== **/
-	public async propertyStatsEditor(input: StatisticModifier): Promise<Property | null> {
-		const { _id, targetKey, modifier } = input;
-		return await this.propertyModel
-			.findByIdAndUpdate(
-				{ _id },
-				{ $inc: { [targetKey]: modifier } },
-				{
-					new: true,
-				},
-			)
-			.exec();
-	}
+	
 
 	/**=========================== (ALL) getProperties =============================== **/
 	public async getProperties(memberId: Types.ObjectId, input: PropertiesInquiry): Promise<Properties> {
@@ -265,5 +253,19 @@ export class PropertyService {
 		if (!result) throw new InternalServerErrorException(Message.REMOVE_FAILED);
 
 		return result;
+	}
+	
+	/**=========================== propertyStatsEditor =============================== **/
+	public async propertyStatsEditor(input: StatisticModifier): Promise<Property | null> {
+		const { _id, targetKey, modifier } = input;
+		return await this.propertyModel
+			.findByIdAndUpdate(
+				{ _id },
+				{ $inc: { [targetKey]: modifier } },
+				{
+					new: true,
+				},
+			)
+			.exec();
 	}
 }

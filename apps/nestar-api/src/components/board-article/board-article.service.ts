@@ -61,13 +61,6 @@ export class BoardArticleService {
 		return targetBoardArticle;
 	}
 
-	public async boardArticleStatsEditor(input: StatisticModifier): Promise<BoardArticle | null> {
-		console.log('executed stats');
-		const { _id, targetKey, modifier } = input;
-		return await this.boardArticleModel
-			.findByIdAndUpdate(_id, { $inc: { [targetKey]: modifier } }, { new: true })
-			.exec();
-	}
 	public async updateBoardArticle(memberId: Types.ObjectId, input: BoardArticleUpdate): Promise<BoardArticle> {
 		const { _id, articleStatus } = input;
 
@@ -183,5 +176,12 @@ export class BoardArticleService {
 		if (!result) throw new InternalServerErrorException(Message.REMOVE_FAILED);
 
 		return result;
+	}
+	public async boardArticleStatsEditor(input: StatisticModifier): Promise<BoardArticle | null> {
+		console.log('executed stats');
+		const { _id, targetKey, modifier } = input;
+		return await this.boardArticleModel
+			.findByIdAndUpdate(_id, { $inc: { [targetKey]: modifier } }, { new: true })
+			.exec();
 	}
 }
