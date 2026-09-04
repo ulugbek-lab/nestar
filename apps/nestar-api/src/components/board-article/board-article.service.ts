@@ -39,12 +39,12 @@ export class BoardArticleService {
 			throw new BadRequestException(Message.CREATE_FAILED);
 		}
 	}
-	public async getBoardArticle(memberId: Types.ObjectId, articleId: Types.ObjectId): Promise<BoardArticle> {
+	public async getBoardArticle(memberId:Types.ObjectId, articleId: Types.ObjectId): Promise<BoardArticle> {
 		const search: T = {
 			_id: articleId,
 			articleStatus: BoardArticleStatus.ACTIVE,
 		};
-		const targetBoardArticle = await this.boardArticleModel.findOne(search).lean().exec();
+		const  targetBoardArticle = await this.boardArticleModel.findOne(search).lean().exec();
 		if (!targetBoardArticle) throw new InternalServerErrorException(Message.NO_DATA_FOUND);
 
 		if (memberId) {
