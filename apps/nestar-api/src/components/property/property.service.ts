@@ -214,6 +214,9 @@ export class PropertyService {
 	public async getFavorities(memberId: Types.ObjectId, input: OrdinaryInquiry): Promise<Properties> {
 		return await this.likeService.getFavoriteProperties(memberId, input)
 	}
+	public async getVisited(memberId: Types.ObjectId, input: OrdinaryInquiry): Promise<Properties> {
+		return await this.viewService.getVisitedProperties(memberId, input)
+	}
 
 	/**=========================== (ADMIN) getAllPropertiesByAdmin =============================== **/
 	public async getAllPropertiesByAdmin(input: AllPropertiesInquiry): Promise<Properties> {
