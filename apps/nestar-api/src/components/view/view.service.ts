@@ -57,11 +57,10 @@ export class ViewService {
 				},
 			])
 			.exec();
-
-		console.log('data', data);
+		console.log('data without map', data);
 		const result: Properties = { list: [], metaCounter: data[0].metaCounter };
 		result.list = data[0].list.map((ele) => ele.visitedProperty);
-
+		console.log('result.list', result);
 		return result;
 	}
 }
